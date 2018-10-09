@@ -1,24 +1,27 @@
 $(document).ready(function(){
 	
+	//init setInterval timer var as global
+	var x;  //Mega Error was here: local scope with {x = setInterval(function()}, xx had local scope and the next click triggers set_user_date_input() which runs a new {x = setInterval(function()}, while the old one remained runnning as well
+	
 	//sets today to datepicker form value
 	document.getElementById('dateHistorical').valueAsDate = new Date();
 	
 	//onLoad runs enternal countdown to nearest New-Year
-	countToNewYear();
+	set_date_to_New_Year();
 	
 	 //---------------------------------------------
 	$("#getDateEvent").click(function() {   // $(document).on("click", '.circle', function() {   // this  click  is  used  to   react  to  newly generated cicles;
-		runCustomCountDown();
+		set_user_date_input();
     });
 	
 	
-	//runs on click with a user set of  date
+	//on click runs a user input value date
 	// **************************************************************************************
     // **************************************************************************************
     //                                                                                     ** 
-	function runCustomCountDown()
+	function set_user_date_input()
 	{
-		var xx, now, distance, days, hours, minutes, seconds, inputZ
+		var now, distance, days, hours, minutes, seconds, inputZ
 		//if empty input
 		if ($("#dateHistorical").val()==""){
 			alert("Select the date");
@@ -27,11 +30,11 @@ $(document).ready(function(){
 		
 		//if OLD date selected
 		if ( new Date($("#dateHistorical").val()).getTime() < new Date().getTime()){  //if UnixTime of patepicker < now TimeStamp
-			alert("You can not set Past time");
+			alert("Please, select date ");
 			return false;
 		}
 		
-		clearInterval(xx);
+		//clearInterval(xx);
 		$("#status").html("");
 		
 	   // Set the date we're counting down to
@@ -44,11 +47,17 @@ $(document).ready(function(){
 		//constructs string "Jan 1, 2019 00:00:00"
 		var constructedDate = inputZ.split("-")[2] + " " + monthX[inputZ.split("-")[1]-1]/*Month digit -1*/ + ", " + inputZ.split("-")[0] + " 00:00:00";  //i.e = "Jan 1, 2019 00:00:00"
 		alert(constructedDate );
-        var countDownDate = new Date(constructedDate).getTime(); //gets UnixTime of user's time input
-        alert(countDownDate);
+        //var countDownDate = new Date(constructedDate).getTime(); //gets UnixTime of user's time input
+        //alert(countDownDate);
         
 
         // can inject funct here!!!!!!
+		//var textZ = inputZ.split("-")[2] + " " + monthX[inputZ.split("-")[1]-1] + " will be in "; //date, month
+		
+		//runs Universal countdown function with user date
+		myCountDown(constructedDate, "#status", "");  //arg("Jan 1, 2019 00:00:00", divToHtml, Text)
+		
+		/*
        // Update the count down every 1 second
        xx = setInterval(function() {
 
@@ -63,6 +72,11 @@ $(document).ready(function(){
           hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
           minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
           seconds = Math.floor((distance % (1000 * 60)) / 1000);
+		  
+		  //adds 0 to 1-9 seconds
+		  if(seconds < 10){
+			  seconds = "0" + seconds;
+		  }
 
           // Display the result in the element with id="status"
          $("#status").html(days + "d " + hours + "h " + minutes + "m " + seconds + "s ");
@@ -73,6 +87,7 @@ $(document).ready(function(){
             document.getElementById("status").innerHTML = "EXPIRED";
         }
       }, 1000);
+	  */
 	}
 	
 // **                                                                                  **
@@ -86,17 +101,18 @@ $(document).ready(function(){
 	// **************************************************************************************
     // **************************************************************************************
     //                                                                                     ** 
-	function countToNewYear()
+	function set_date_to_New_Year()
 	{
 		//gets next year
 		//var aYearFromNow = new Date();
 		var nextYear = new Date(new Date().setFullYear(new Date().getFullYear() + 1)) //gets next year date//returns Tue Oct 08 2019 14:40:07 GMT+0300 (за східноєвропейським літнім часом)
-		var nextYearZ = nextYear.toString().split(" ")[3]; //gets the next year separartely
+		var nextYearZ = nextYear.toString().split(" ")[3]; //gets the next year separartely from nextYear
 		
 		
 	    // Set the date we're counting down to
         var countDownDate = new Date("Jan 1," + nextYearZ + " 00:00:00").getTime(); //always sets to 1 Jan of next year //new Date("Jan 5, 2019 15:37:25").getTime();
 		
+		 //runs countdown with passed New Year date
 		 myCountDown(countDownDate, "#newYear", "New Year will be in ");
 	   
 	}
@@ -109,19 +125,20 @@ $(document).ready(function(){
   
   
   
-    //
+    //Universal Function to run countdowns with a date passed as 1st arg
 	// **************************************************************************************
     // **************************************************************************************
     //                                                                                     ** 
-	function myCountDown(dateStringX, myDiv, divText)  //dateString = "Jan 1, 2019 00:00:00"
+	function myCountDown(dateStringX, myDiv, divText)  //args(dateString = "Jan 1, 2019 00:00:00", div to html result, text to add to result)
 	{
-		var countDownDate = new Date(dateStringX).getTime();  //gets UnixTime
+		clearInterval(x); //mega fix, without this timers overlaps
+		var countDownDate = new Date(dateStringX).getTime();  //gets UnixTime of passed 1 arg
        //alert(countDownDate);
         
 
 
        // Update the count down every 1 second
-       var x = setInterval(function() {
+       /* var */x = setInterval(function() {  //x must be global
 
            // Get todays date and time
            var now = new Date().getTime();
@@ -135,6 +152,17 @@ $(document).ready(function(){
           var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
           var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
+		  
+		  //adds 0 to 1-9 minutes, ie display 09 minutes, not 9 minutes
+		  if(minutes < 10){
+			  minutes = "0" + minutes;
+		  }
+		  
+		  //adds 0 to 1-9 seconds, ie display 09 seconds, not 9 seconds
+		  if(seconds < 10){
+			  seconds = "0" + seconds;
+		  }
+		  
           // Display the result in the element with id="status"
 		  //$(myDiv).stop().fadeOut("fast",function(){ $(this).html(divText + days + "d " + hours + "h " + minutes + "m " + seconds + "s ")}).fadeIn(900);  //with animation
           $(myDiv).html(divText + days + "d " + hours + "h " + minutes + "m " + seconds + "s ");
