@@ -55,7 +55,7 @@ $(document).ready(function(){
 		//var textZ = inputZ.split("-")[2] + " " + monthX[inputZ.split("-")[1]-1] + " will be in "; //date, month
 		
 		//runs Universal countdown function with user date
-		myCountDown(constructedDate, "#status", "");  //arg("Jan 1, 2019 00:00:00", divToHtml, Text)
+		my_CountDown_Timer_Core(constructedDate, "#status", "");  //arg("Jan 1, 2019 00:00:00", divToHtml, Text)
 		
 		/*
        // Update the count down every 1 second
@@ -113,7 +113,7 @@ $(document).ready(function(){
         var countDownDate = new Date("Jan 1," + nextYearZ + " 00:00:00").getTime(); //always sets to 1 Jan of next year //new Date("Jan 5, 2019 15:37:25").getTime();
 		
 		 //runs countdown with passed New Year date
-		 myCountDown(countDownDate, "#newYear", "New Year will be in ");
+		 my_CountDown_Timer_Core(countDownDate, "#newYear", "New Year will be in ");
 	   
 	}
     // **                                                                                  **
@@ -129,7 +129,7 @@ $(document).ready(function(){
 	// **************************************************************************************
     // **************************************************************************************
     //                                                                                     ** 
-	function myCountDown(dateStringX, myDiv, divText)  //args(dateString = "Jan 1, 2019 00:00:00", div to html result, text to add to result)
+	function my_CountDown_Timer_Core(dateStringX, myDiv, divText)  //args(dateString = "Jan 1, 2019 00:00:00", div to html result, text to add to result)
 	{
 		clearInterval(x); //mega fix, without this timers overlaps
 		var countDownDate = new Date(dateStringX).getTime();  //gets UnixTime of passed 1 arg
