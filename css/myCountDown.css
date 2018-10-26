@@ -3,8 +3,8 @@
 	padding:1em 0em 0em 0em;	
 }
 
-/* Datepicker color*/
-#dateHistorical{
+/* Datepicker color, time picker*/
+#dateHistorical, #timeZ{
 	color:black;
 }
 
@@ -58,7 +58,7 @@
 .head-style{
 	color:white;
 	background-color:lavender;padding:10px;
-	background-image: url('../images/walls.jpg');
+	background-image: url('../images/back.jpg') ;   
 	/*text-shadow: 1px 1px 2px black, 0 0 1em red;*/ /* Shadow params */
 	/* background-image: linear-gradient(120deg, #f093fb 0%, #f5576c 100%); */
 	

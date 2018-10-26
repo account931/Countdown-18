@@ -48,7 +48,15 @@
 					     <div class="form-group">
                               <label for="dateHistorical">Select date </label>
 				              <input type="date" name="" id="dateHistorical" class="date"> 
-							   <input id ="getDateEvent" type="button" class="btn btn-default" value="Get">
+							   
+						  </div>
+						  
+						  <div class="form-group">
+                              <label for="timeZ">Select time </label>
+				              <input type="time" name="" id="timeZ" class="date" value="00:00">
+                              <br>							  
+							  <!-- Button to start -->
+							  <input id ="getDateEvent" type="button" class="btn btn-default" value="Get">
 						  </div>
 						 
 					 </div>
