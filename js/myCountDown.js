@@ -128,11 +128,14 @@ $(document).ready(function(){
 		var monthX = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
         inputZ = $("#dateHistorical").val();  //gets user input
-        alert(inputZ);
+        //alert(inputZ + timeXX);
+		$("#err").append("<br>" + inputZ + timeXX); //instead of alert
 		
 		//constructs string "Jan 1, 2019 00:00:00" OR + time set by user (00:00) by default
 		var constructedDate = inputZ.split("-")[2] + " " + monthX[inputZ.split("-")[1]-1]/*Month digit -1*/ + ", " + inputZ.split("-")[0] +  timeXX /* " 00:00:00" */;  //i.e = "Jan 1, 2019 00:00:00"
-		alert(constructedDate );
+		//alert(constructedDate);
+		$("#err").append("<br>" + constructedDate); //instead of alert
+		
         //var countDownDate = new Date(constructedDate).getTime(); //gets UnixTime of user's time input
         //alert(countDownDate);
         

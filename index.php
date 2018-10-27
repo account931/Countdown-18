@@ -80,8 +80,20 @@
 				    </div>
 				    <!--------------- END  myCountDowne ------------------>
 				 
-				  
-				  
+				 
+				 
+				 
+				 
+				 
+				    <!--------- Error Closable window-------->
+					<br><br><br><br>
+					<div class="col-sm-12 col-xs-12" id="errorDiv"> 
+				       <div class="alert alert-info alert-dismissible" id="err">
+					         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                             
+                       </div>
+					</div>
+				    <!------ ENF Error Closable window-------->
 				  
 				  
 				
