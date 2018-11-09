@@ -13,8 +13,10 @@ $(document).ready(function(){
 	 //---------------------------------------------
 	 //Click in User Calendar
 	$("#getDateEvent").click(function() {   // $(document).on("click", '.circle', function() {   // this  click  is  used  to   react  to  newly generated cicles;
-		set_user_date_input();
-    });
+		if(set_user_date_input()){ //checks if {set_user_date_input()} does not return FALSE(if date is old/empty) and not to run {startExternal_CountDown()} in those case
+		    startExternal_CountDown();  //runs EXTERNAL ANIMATED PLUG-IN COUNTDOWN from external_countdown_plugin/assets/js/script.js //display the same as {set_user_date_input();}, just with animated PLUG-IN
+		}
+	});
 	
 	
 	
@@ -81,7 +83,8 @@ $(document).ready(function(){
          // If the count down is finished, write some text 
         if (distance < 0) {
             clearInterval(x);
-            $("#newYear").html("EXPIRED");
+            $("#newYear").html("EXPIRED, Happy New Year");
+			alert("Happy New Year");
         }
       }, 1000);
 	   
@@ -136,6 +139,10 @@ $(document).ready(function(){
 		//alert(constructedDate);
 		$("#err").append("<br>" + constructedDate); //instead of alert
 		
+		
+		//sets date for EXTERNAL ANIMATED PLUG-IN COUNTDOWN in external_countdown_plugin/assets/js/script.js 
+		ts = new Date(constructedDate).getTime(); 
+		
         //var countDownDate = new Date(constructedDate).getTime(); //gets UnixTime of user's time input
         //alert(countDownDate);
         
@@ -177,6 +184,7 @@ $(document).ready(function(){
         }
       }, 1000);
 	  */
+	  return true;
 	}
 	
 // **                                                                                  **
@@ -229,12 +237,13 @@ $(document).ready(function(){
 		  
           // Display the result in the element with id="status"
 		  //$(myDiv).stop().fadeOut("fast",function(){ $(this).html(divText + days + "d " + hours + "h " + minutes + "m " + seconds + "s ")}).fadeIn(900);  //with animation
-          $(myDiv).html(divText + days + "d " + hours + "h " + minutes + "m " + seconds + "s ");
+          $(myDiv).html(divText + days + " days " + hours + "h " + minutes + "m " + seconds + "s ");
 
          // If the count down is finished, write some text 
         if (distance < 0) {
             clearInterval(x);
             $(myDiv).html("EXPIRED");
+			alert("Time is out");
         }
       }, 1000);
 	}

@@ -18,6 +18,23 @@
       <script src="js/myCountDown.js"></script>         <!-- Core myFacebook API JS-->
 	  <script src="js/changeStyleTheme.js"></script>   <!-- Change wallpapers,changeStyleTheme JS-->
 	  
+	  
+	  
+	 <!--------------- START  EXTERNAL ANIMATED PLUG-IN COUNTDOWN  FILES  --------------->   <!-- Time  is  set  in = asserts/js/script.js-->
+      <!--  Files  those  uses    for  creating countdown  are  stored  in FOLDER  ASSERTS-->
+
+      <!-- CSS -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" />
+        <link rel="stylesheet" href="external_countdown_plugin/assets/countdown/jquery.countdown.css" />        
+	   
+	   <!--  JS  Countdown--> <!--Located  in header  causes  Non-working-->
+       <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	   <script src="external_countdown_plugin/assets/countdown/jquery.countdown.js"></script>
+	   <script src="external_countdown_plugin/assets/js/script.js"></script>  
+	 <!----------------  END  EXTERNAL ANIMATED PLUG-IN COUNTDOWN  FILES  ----------------------------------->
+	  
+	  
+	  
 	  <meta name="viewport" content="width=device-width" />
 	  
 	  <!--Favicon-->
@@ -83,6 +100,10 @@
 				 
 				 
 				 
+				
+				 
+				 
+				 
 				 
 				 
 				    <!--------- Error Closable window-------->
@@ -96,6 +117,45 @@
 				    <!------ ENF Error Closable window-------->
 				  
 				  
+				
+				
+				
+				
+				 <br>
+				 <!----------------------------------- START EXTERNAL ANIMATE COUNTDOWN PLUG-IN---------------------------------->
+                 <!-- START COUNTDOND--><!--  ALL  FILES  ARE  IN ASSERTS  folder --> <!-- Time  is  set  in = asserts/js/script.js-->
+				 <div class="col-sm-12 col-xs-12" id="countdown"> 
+                    
+				 </div>
+                 <!--<p id="note"></p>--><!--  This  shows  text   info  , like  u  have  5  days  left-->
+                 <!-- END  COUNTDOWN -->
+				 <!----------------------------------- END  EXTERNAL ANIMATE COUNTDOWN PLUG-IN---------------------------------->
+				 
+				
+				
+				
+				
+				
+				
+
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
 				
 				
 
@@ -172,3 +232,5 @@
       RecordTxt::RecordAnyInput(array(/*$user*/), 'recordText/myCountDown.txt');// Record  to  text;
 //End  Record;
 ?>
+
+
