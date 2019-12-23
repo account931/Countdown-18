@@ -15,7 +15,8 @@
 	 
       <link rel="stylesheet" type="text/css" media="all" href="css/myCountDown.css">
 	  
-      <script src="js/myCountDown.js"></script>         <!-- Core myFacebook API JS-->
+	  <script src="js/dropAdvertise_zzz.js"></script>         <!-- Core countdown18 API JS-->
+      <script src="js/myCountDown.js"></script>         <!-- Core countdown18 API JS-->
 	  <script src="js/changeStyleTheme.js"></script>   <!-- Change wallpapers,changeStyleTheme JS-->
 	  
 	  
